@@ -1,0 +1,132 @@
+<%--=========================================================================== 
+Header (top area). 
+===========================================================================--%>
+
+<%@ page import="ua.nure.kaliuha.SummaryTask4.db.Role" %>
+<%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
+<%@ include file="/WEB-INF/jspf/head.jspf" %>
+<style>
+    .header a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .content a {
+        color: #008005;
+        text-decoration: none;
+    }
+
+    .header {
+        justify-content: space-between;
+        display: flex;
+        padding: 5px;
+        background-color: #6B9CD2;
+        color: #ffffff;
+    }
+
+    /***************************************************************
+    Style for the left located head menu (DIV tag at left)
+    ***************************************************************/
+    .header__section {
+        display: flex;
+        align-items: center;
+    }
+
+    .header_item {
+        padding: 2px 15px;
+        font-size: 20px;
+        margin-left: 5px;
+    }
+
+    .header_item:hover {
+        background-color: #ff9900;
+        border-radius: 2px;
+    }
+
+    .headerButton,
+    .headerInfo {
+        cursor: pointer;
+    }
+
+</style>
+<div class="header">
+    <c:if test="${not empty user}">
+        <%--===========================================================================
+        This is the user menu.
+        ===========================================================================--%>
+
+        <div class="header__section">
+
+            <c:choose>
+                <%--===========================================================================
+                This way we define the ADMIN MENU.
+                ===========================================================================--%>
+                <c:when test="${userRole.name == 'admin' }">
+                    <div class="header_item headerButton">
+                        <a href="controller?command=subjectsList">Create Test</a></div>
+                </c:when>
+
+
+                <%--===========================================================================
+                This way we define the USER MENU.
+                ===========================================================================--%>
+                <c:when test="${userRole.name == 'student'}">
+                    <div class="header_item headerButton">
+                        <a href="controller?command=subjectsList">Start Test</a></div>
+                </c:when>
+            </c:choose>
+
+                <%--===========================================================================
+                This way we define the settings anchor.
+                ===========================================================================--%>
+
+
+        </div>
+
+        <%--===========================================================================
+        This way we define the menu located at the right of header.
+        ===========================================================================--%>
+        <div id="header__section">
+
+                <%--===========================================================================
+                Type user name if the user object is presented in the current session.
+                ===========================================================================--%>
+            <div class="header_item headerInfo">
+                <c:out value="${user.firstName} ${user.lastName}"/>
+
+                    <%--===========================================================================
+                    Type user role name if the user object is presented in the current session.
+                    ===========================================================================--%>
+                <c:if test="${not empty userRole}">
+                    <c:out value="(${userRole.name})"/>
+                </c:if></div>
+
+                <%--===========================================================================
+                Type link to logout
+                ===========================================================================--%>
+            <div class="header_item headerButton">
+                <a href="controller?command=logout">
+                    Logout
+                </a></div>
+
+        </div>
+    </c:if>
+
+    <c:if test="${empty user}">
+        <div id="header__section">
+        </div>
+        <div class="header__section">
+
+            <div class="header_item headerButton">
+                <a href="login.jsp">Login</a>
+            </div>
+            <h3>|</h3>
+            <div class="header_item headerButton">
+                <a href="registration.jsp">
+                    Registration
+                </a></div>
+        </div>
+
+    </c:if>
+</div>
