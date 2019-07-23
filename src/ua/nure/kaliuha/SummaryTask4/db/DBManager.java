@@ -124,6 +124,8 @@ public final class DBManager {
 
     private static final String SQL_FIND_USER_BY_ID = "SELECT * FROM user WHERE id=?";
 
+    private static final String SQL_FIND_RESULT_BY_USER_ID = "SELECT * FROM result WHERE user_id=?";
+
     private static final String SQL_FIND_TEST_BY_ID = "SELECT * FROM test WHERE id=?";
 
     private static final String SQL_FIND_ALL_SUBJECTS = "SELECT * FROM subject";
@@ -418,7 +420,7 @@ public final class DBManager {
         return answer;
     }
 
-    public List<Answer> findTrueAnswersByQuestionId(long question_id) throws DBException {
+    public List<Answer> findAnswersByQuestionId(long question_id, boolean isRight) throws DBException {
         List<Answer> trueAnswerList = new ArrayList<Answer>();
 
         PreparedStatement pstmt = null;
@@ -465,5 +467,35 @@ public final class DBManager {
             close(con, pstmt, rs);
         }
         return false;
+    }
+
+    public Result findUserResult(Long id) throws DBException {
+        Result result = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Connection con = null;
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(SQL_FIND_RESULT_BY_USER_ID);
+            pstmt.setLong(1, id);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                result = extractResult(rs);
+            }
+            con.commit();
+        } catch (SQLException | DBException ex) {
+            rollback(con);
+            throw new DBException(Messages.ERR_CANNOT_OBTAIN_USER_BY_ID, ex);
+        } finally {
+            close(con, pstmt, rs);
+        }
+        return result;
+    }
+
+    private Result extractResult(ResultSet rs) throws SQLException {
+        Result result = new Result();
+
+        result.setId(rs.getLong(Fields.ENTITY_ID));
+        return result;
     }
 }

@@ -204,6 +204,7 @@ values (default, 'Химия');
 
 create TABLE `result`
 (
+    `id` INT NOT NULL AUTO_INCREMENT,
     `user_id` INT NOT NULL REFERENCES `user` (`id`),
     `test_id` INT NOT NULL REFERENCES `test` (`id`),
     `result`  INT NOT NULL

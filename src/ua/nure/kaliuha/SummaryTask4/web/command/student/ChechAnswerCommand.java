@@ -60,7 +60,7 @@ public class ChechAnswerCommand extends Command {
             return Path.COMMAND_TESTING;
         }
 
-        List<Answer> trueAnswerList = DBManager.getInstance().findTrueAnswersByQuestionId(questionId);
+        List<Answer> trueAnswerList = DBManager.getInstance().findAnswersByQuestionId(questionId, true);
         LOG.trace("Found in DB: trueAnswerList --> " + trueAnswerList);
 
         int testSize = (int) session.getAttribute("test_size");
