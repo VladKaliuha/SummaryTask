@@ -90,17 +90,9 @@
 
         <div class="test_info">
             <h1>Test: "${test_name}"</h1>
-            <h3>
-                Test duration: ${test_time}min</h3>
-            <h3>Number of questions: ${test_size}</h3>
+            <h3>Your result: ${result}%</h3>
 
-            <c:if test="${is_empty=='true'}">
-                <a href="#" class="button7">Start</a>
-            </c:if>
 
-            <c:if test="${is_empty=='false'}">
-                <a href="controller?command=testing" class="button7">Start</a>
-            </c:if>
             <p></p>
 
         </div>

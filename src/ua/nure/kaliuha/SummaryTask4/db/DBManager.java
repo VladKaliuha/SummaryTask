@@ -118,6 +118,8 @@ public final class DBManager {
 
     private static final String SQL_INSERT_INTO_USER = "INSERT INTO user(first_name, last_name, login, email, password, male) VALUES (?, ?, ?, ?, ?, ?)";
 
+    private static final String SQL_INSERT_INTO_RESULT = "INSERT INTO result(user_id, test_id, result) VALUES (?, ?, ?)";
+
     private static final String SQL_FIND_USER_BY_EMAIL = "SELECT * FROM user WHERE email=?";
 
     private static final String SQL_FIND_USER_BY_ID = "SELECT * FROM user WHERE id=?";
@@ -440,5 +442,28 @@ public final class DBManager {
         }
 
         return trueAnswerList;
+    }
+
+    public boolean insertResult(User user, long testId, int finalResult) throws DBException {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Connection con = null;
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(SQL_INSERT_INTO_RESULT);
+            pstmt.setLong(1, user.getId());
+            pstmt.setLong(2, testId);
+            pstmt.setInt(3, finalResult);
+            if (pstmt.executeUpdate() > 0) {
+                con.commit();
+                return true;
+            }
+        } catch (SQLException | DBException ex) {
+            rollback(con);
+            throw new DBException(Messages.ERR_CANNOT_INSERT_RESULT, ex);
+        } finally {
+            close(con, pstmt, rs);
+        }
+        return false;
     }
 }

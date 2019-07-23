@@ -49,11 +49,19 @@ public class ChechAnswerCommand extends Command {
         questionNum = ((int) session.getAttribute("question_num"));
         LOG.trace("Session attribute: question_num --> " + questionNum);
 
+
+        String[] userAnswer = request.getParameterValues("user_answer");
+        LOG.trace("Request parameter: user_answer --> " + userAnswer);
+
+        if ((listUserAnswers.get(questionNum) != 0) || userAnswer == null) {
+            session.setAttribute("question_num", questionNum + 1);
+            LOG.trace("Set the session attribute: question_num --> " + questionNum + 1);
+
+            return Path.COMMAND_TESTING;
+        }
+
         List<Answer> trueAnswerList = DBManager.getInstance().findTrueAnswersByQuestionId(questionId);
         LOG.trace("Found in DB: trueAnswerList --> " + trueAnswerList);
-
-        String userAnswer = request.getParameter("user_answer");
-        LOG.trace("Request parameter: user_answer --> " + userAnswer);
 
         int testSize = (int) session.getAttribute("test_size");
         LOG.trace("Session attribute: testSize --> " + testSize);
@@ -61,9 +69,10 @@ public class ChechAnswerCommand extends Command {
 
         int checkTrueAnswer = 0;
         for (Answer answer : trueAnswerList) {
-            if (answer.getText().equals(userAnswer)) {
-                checkTrueAnswer++;
-            }
+            for (String answ : userAnswer)
+                if (answer.getText().equals(answ)) {
+                    checkTrueAnswer++;
+                }
         }
         if (checkTrueAnswer == trueAnswerList.size()) {
             listUserAnswers.set(questionNum, 1);

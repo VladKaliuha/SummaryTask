@@ -23,18 +23,9 @@ public class SubjectsListCommand extends Command {
 
         LOG.debug("Command starts");
 
-        // get menu items list
         List<Subject> subjectList = DBManager.getInstance().findSubjects();
         LOG.trace("Found in DB: subjectList --> " + subjectList);
 
-        // sort menu by category
-//        Collections.sort(menuItems, new Comparator<Subject>() {
-//            public int compare(MenuItem o1, MenuItem o2) {
-//                return (int)(o1.getCategoryId() - o2.getCategoryId());
-//            }
-//        });
-
-        // put menu items list to the request
         request.setAttribute("subjectList", subjectList);
         LOG.trace("Set the request attribute: subjectList --> " + subjectList);
 

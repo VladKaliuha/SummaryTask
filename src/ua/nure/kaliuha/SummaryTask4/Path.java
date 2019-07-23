@@ -73,8 +73,8 @@ public final class Path {
 
     public static final String PAGE_TEST_LIST = "/WEB-INF/jsp/student/tests_list_by_subject.jsp";
 
-    public static final String PAGE_TESTING_ONE_RIGHT ="/WEB-INF/jsp/student/testing_one_right.jsp" ;
-    public static final String PAGE_TESTING_MANY_RIGHT ="/WEB-INF/jsp/student/testing_many_right.jsp" ;
-    public static final String PAGE_TESTING_YOUR_ANSWER ="/WEB-INF/jsp/student/testing_your_answer.jsp" ;
+    public static final String PAGE_TESTING_ONE_RIGHT = "/WEB-INF/jsp/student/testing_one_right.jsp";
+    public static final String PAGE_TESTING_MANY_RIGHT = "/WEB-INF/jsp/student/testing_many_right.jsp";
+    public static final String PAGE_TESTING_YOUR_ANSWER = "/WEB-INF/jsp/student/testing_your_answer.jsp";
     public static final String COMMAND_TESTING = "controller?command=testing";
 }

@@ -7,6 +7,7 @@ public class Messages {
     public static final String ERR_CANNOT_INSERT_USER = "Cannot insert a user into data base";
     public static final String ERR_CANNOT_OBTAIN_SUBJECT = "Cannot obtain subject from data source";
     public static final String ERR_CANNOT_OBTAIN_ANSWER = "Cannot obtain answer from data source";
+    public static final String ERR_CANNOT_INSERT_RESULT = "Cannot insert a result into data base";
 
     private Messages() {
         //--------
