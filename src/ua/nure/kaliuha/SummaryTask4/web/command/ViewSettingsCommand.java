@@ -21,6 +21,12 @@ public class ViewSettingsCommand extends Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, AppException {
         LOG.debug("Command starts");
+        if (request.getParameter("command_name") != null) {
+            String command = request.getParameter("command_name");
+            if ("changeLocale".equals(command)) {
+                return Path.PAGE_CHANGE_LOCALE;
+            }
+        }
 
         LOG.debug("Command finished");
         return Path.PAGE_SETTINGS;

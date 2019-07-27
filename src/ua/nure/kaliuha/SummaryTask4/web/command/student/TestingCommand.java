@@ -41,7 +41,9 @@ public class TestingCommand extends Command {
         List<Question> questionList = (List<Question>) session.getAttribute("questionList");
         LOG.trace("Session attribute: questionList --> " + questionList);
 
-
+        if (question_num > questionList.size() - 1) {
+            question_num--;
+        }
         Question question = questionList.get(question_num);
 
         List<Answer> answerList = DBManager.getInstance().findAnswersByQuestionId(question.getId());

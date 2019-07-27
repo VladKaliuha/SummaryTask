@@ -8,8 +8,8 @@ public class Answer extends Entity {
             .getSerialVersionUID();
 
     private String text;
-    private boolean isRight;
-    private int questionId;
+    private boolean correct;
+    private long questionId;
 
     public String getText() {
         return text;
@@ -19,19 +19,19 @@ public class Answer extends Entity {
         this.text = text;
     }
 
-    public boolean isRight() {
-        return isRight;
+    public boolean getCorrect() {
+        return correct;
     }
 
-    public void setRight(boolean right) {
-        isRight = right;
+    public void setCorrect(boolean right) {
+        correct = right;
     }
 
-    public int getQuestionId() {
+    public long getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(int questionId) {
+    public void setQuestionId(long questionId) {
         this.questionId = questionId;
     }
 
@@ -39,7 +39,7 @@ public class Answer extends Entity {
     public String toString() {
         return "Answer{" +
                 "text='" + text + '\'' +
-                ", isRight=" + isRight +
+                ", isRight=" + correct +
                 ", questionId=" + questionId +
                 '}';
     }

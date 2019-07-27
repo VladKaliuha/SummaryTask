@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class StartTestCommand extends Command {
@@ -51,6 +52,14 @@ public class StartTestCommand extends Command {
 
         request.getSession().setAttribute("test_size", test.getSize());
         LOG.trace("Set the session attribute: testSize --> " + test.getSize());
+
+        final long ONE_MINUTE_IN_MILLIS=60000;//millisecs
+
+        Calendar date = Calendar.getInstance();
+        long time= date.getTimeInMillis()+(test.getTime()*ONE_MINUTE_IN_MILLIS);
+
+        request.getSession().setAttribute("test_time", time);
+        LOG.trace("Set the session attribute: test_time --> " + time);
 
         request.getSession().setAttribute("test_id", test.getId());
         LOG.trace("Set the session attribute: testId --> " + test.getId());

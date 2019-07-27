@@ -46,7 +46,7 @@ public final class Path {
      */
     public static final String COMMAND_LIST_USER = "/controller?command=listUser";
 
-    public static final String COMMAND_ADMIN_LIST_TESTS = "/controller?command=listTestToEdit";
+    public static final String COMMAND_ADMIN_LIST_TESTS = "controller?command=subjectsList";
 
     public static final String COMMAND_ADD_QUESTION = "/controller?command=detailTest&testId=";
 
@@ -77,4 +77,16 @@ public final class Path {
     public static final String PAGE_TESTING_MANY_RIGHT = "/WEB-INF/jsp/student/testing_many_right.jsp";
     public static final String PAGE_TESTING_YOUR_ANSWER = "/WEB-INF/jsp/student/testing_your_answer.jsp";
     public static final String COMMAND_TESTING = "controller?command=testing";
+    public static final String PAGE_USER_CABINET = "/WEB-INF/jsp/student/student_cabinet.jsp";
+    public static final String PAGE_SUBJECT_LIST_TO_EDIT = "WEB-INF/jsp/admin/subject_list_to_edit.jsp";
+    public static final String PAGE_EDIT_SUBJECT = "WEB-INF/jsp/admin/edit_subject.jsp";
+    public static final String PAGE_CREATE_SUBJECT = "WEB-INF/jsp/admin/create_subject.jsp";
+    public static final String PAGE_TEST_LIST_TO_EDIT = "WEB-INF/jsp/admin/test_list_to_edit.jsp";
+    public static final String PAGE_CREATE_TEST = "WEB-INF/jsp/admin/create_test.jsp";
+    public static final String PAGE_QUESTION_LIST_TO_EDIT = "WEB-INF/jsp/admin/question_list_to_edit.jsp";
+    public static final String PAGE_CREATE_QUESTION = "WEB-INF/jsp/admin/create_question.jsp";
+    public static final String PAGE_CHANGE_LOCALE = "WEB-INF/jsp/changeLocale.jsp";
+    public static final String PAGE_EDIT_QUESTION = "WEB-INF/jsp/admin/edit_question.jsp";
+    public static final String PAGE_CREATE_ANSWER = "WEB-INF/jsp/admin/create_answer.jsp";
+    public static final String PAGE_SUBJECT_STUDENT_RESULTS = "WEB-INF/jsp/admin/student_results.jsp";
 }

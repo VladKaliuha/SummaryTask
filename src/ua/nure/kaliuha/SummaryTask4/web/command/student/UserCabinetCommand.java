@@ -3,6 +3,7 @@ package ua.nure.kaliuha.SummaryTask4.web.command.student;
 import org.apache.log4j.Logger;
 import ua.nure.kaliuha.SummaryTask4.Path;
 import ua.nure.kaliuha.SummaryTask4.db.DBManager;
+import ua.nure.kaliuha.SummaryTask4.db.entity.Result;
 import ua.nure.kaliuha.SummaryTask4.db.entity.User;
 import ua.nure.kaliuha.SummaryTask4.exeption.AppException;
 import ua.nure.kaliuha.SummaryTask4.web.command.Command;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 public class UserCabinetCommand extends Command {
     private static final Logger LOG = Logger.getLogger(CommandContainer.class);
@@ -31,7 +33,10 @@ public class UserCabinetCommand extends Command {
 
         DBManager manager = DBManager.getInstance();
 
-        manager.findUserResult(user.getId());
-        return Path.PAGE_SUBJECT_LIST;
+        List<Result> result = manager.findUserResult(user.getId());
+
+        request.setAttribute("result", result);
+
+        return Path.PAGE_USER_CABINET;
     }
 }

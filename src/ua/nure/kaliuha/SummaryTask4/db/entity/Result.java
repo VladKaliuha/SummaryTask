@@ -7,23 +7,42 @@ public class Result extends Entity {
             .lookup(Result.class)
             .getSerialVersionUID();
 
-    private int userId;
-    private int testId;
+    private long userId;
+    private long testId;
     private int result;
+    private String date;
 
-    public int getUserId() {
+    public String getTestName() {
+        return testName;
+    }
+
+    public void setTestName(String testName) {
+        this.testName = testName;
+    }
+
+    private String testName;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public int getTestId() {
+    public long getTestId() {
         return testId;
     }
 
-    public void setTestId(int testId) {
+    public void setTestId(long testId) {
         this.testId = testId;
     }
 

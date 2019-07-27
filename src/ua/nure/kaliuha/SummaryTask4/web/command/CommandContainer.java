@@ -1,6 +1,10 @@
 package ua.nure.kaliuha.SummaryTask4.web.command;
 
 import org.apache.log4j.Logger;
+import ua.nure.kaliuha.SummaryTask4.web.command.admin.*;
+import ua.nure.kaliuha.SummaryTask4.web.command.common.ForwardToCommand;
+import ua.nure.kaliuha.SummaryTask4.web.command.common.SubjectsListCommand;
+import ua.nure.kaliuha.SummaryTask4.web.command.common.TestsListCommand;
 import ua.nure.kaliuha.SummaryTask4.web.command.student.*;
 
 import java.util.Map;
@@ -21,8 +25,26 @@ public class CommandContainer {
         commands.put("testsListBySubject", new TestsListCommand());
         commands.put("startTest", new StartTestCommand());
         commands.put("testing", new TestingCommand());
-        commands.put("checkAnswer", new ChechAnswerCommand());
+        commands.put("checkAnswer", new CheckAnswerCommand());
         commands.put("finishTest", new FinishTestCommand());
+        commands.put("userCabinet", new UserCabinetCommand());
+        commands.put("editSubject", new EditSubjectCommand());
+        commands.put("createSubject", new CreateSubjectCommand());
+        commands.put("deleteSubject", new DeleteSubjectCommand());
+        commands.put("forwardTo", new ForwardToCommand());
+        commands.put("createTest", new CreateTestCommand());
+        commands.put("createQuestion", new CreateQuestionCommand());
+        commands.put("updateTest", new EditTestCommand());
+        commands.put("deleteTest", new DeleteTestCommand());
+        commands.put("showQuestion", new ShowQuestionTextCommand());
+        commands.put("startEditQuestion", new StartEditQuestionCommand());
+        commands.put("viewSettings", new ViewSettingsCommand());
+        commands.put("editQuestion", new EditQuestionCommand());
+        commands.put("deleteQuestion", new DeleteQuestionCommand());
+        commands.put("deleteAnswer", new DeleteAnswerCommand());
+        commands.put("createAnswer", new CreateAnswerCommand());
+        commands.put("showUserResults", new ShowUserResultsCommand());
+
 /*      commands.put("te", new ViewSettingsCommand());
         commands.put("noCommand", new NoCommand());
 

@@ -12,16 +12,16 @@ public class Question extends Entity {
             .lookup(Question.class)
             .getSerialVersionUID();
 
-    private int testId;
+    private long testId;
     private String text;
     private int answerTypeId;
 
 
-    public int getTestId() {
+    public long getTestId() {
         return testId;
     }
 
-    public void setTestId(int testId) {
+    public void setTestId(long testId) {
         this.testId = testId;
     }
 

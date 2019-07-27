@@ -3,6 +3,7 @@ package ua.nure.kaliuha.SummaryTask4.web.command.student;
 import org.apache.log4j.Logger;
 import ua.nure.kaliuha.SummaryTask4.Path;
 import ua.nure.kaliuha.SummaryTask4.db.DBManager;
+import ua.nure.kaliuha.SummaryTask4.db.entity.Result;
 import ua.nure.kaliuha.SummaryTask4.db.entity.Test;
 import ua.nure.kaliuha.SummaryTask4.db.entity.User;
 import ua.nure.kaliuha.SummaryTask4.exeption.AppException;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class FinishTestCommand extends Command {
@@ -49,7 +52,14 @@ public class FinishTestCommand extends Command {
 
         int finalResult = (int) result;
 
-        DBManager.getInstance().insertResult(user, testId, finalResult);
+        Result insertResult = new Result();
+        insertResult.setResult(finalResult);
+        insertResult.setTestId(testId);
+        insertResult.setUserId(user.getId());
+        insertResult.setDate(getCurrentLocalDateTimeStamp());
+        insertResult.setTestName(test.getName());
+
+        DBManager.getInstance().insertResult(insertResult);
         LOG.trace("Insert into DB: result --> " + finalResult + testId + user);
 
         request.setAttribute("test_name", test.getName());
@@ -60,5 +70,11 @@ public class FinishTestCommand extends Command {
 
         LOG.debug("Command finished");
         return Path.PAGE_FINISH_TEST;
+    }
+
+
+    public String getCurrentLocalDateTimeStamp() {
+        return new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
+
     }
 }
