@@ -10,8 +10,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.ObjectStreamClass;
 
 public class ForwardToCommand extends Command {
+
+    private static final long serialVersionUID = ObjectStreamClass
+            .lookup(ForwardToCommand.class)
+            .getSerialVersionUID();
+
     private static final Logger LOG = Logger.getLogger(CommandContainer.class);
 
 
@@ -50,6 +56,14 @@ public class ForwardToCommand extends Command {
                 request.setAttribute("question_id", request.getParameter("question_id"));
                 request.setAttribute("question_num", request.getParameter("question_num"));
                 return Path.PAGE_CREATE_ANSWER;
+            }
+            case "find_user": {
+                request.setAttribute("ex", null);
+                return Path.PAGE_SEARCH;
+            }
+            case "changeRole": {
+                request.setAttribute("user_id", request.getParameter("user_id"));
+                return Path.PAGE_CHANGE_ROLE;
             }
 
         }

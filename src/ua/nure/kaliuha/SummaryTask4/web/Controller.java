@@ -1,9 +1,7 @@
 package ua.nure.kaliuha.SummaryTask4.web;
 
 import org.apache.log4j.Logger;
-import ua.nure.kaliuha.SummaryTask4.Path;
 import ua.nure.kaliuha.SummaryTask4.exeption.AppException;
-import ua.nure.kaliuha.SummaryTask4.web.command.Command;
 import ua.nure.kaliuha.SummaryTask4.web.command.CommandContainer;
 
 import javax.servlet.ServletException;
@@ -11,54 +9,48 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.ObjectStreamClass;
 
 
 public class Controller extends HttpServlet {
 
-    private static final long serialVersionUID = 2423353715955164816L;
+    private static final long serialVersionUID = ObjectStreamClass
+            .lookup(Controller.class)
+            .getSerialVersionUID();
 
     private static final Logger LOG = Logger.getLogger(Controller.class);
 
-    protected void doGet(HttpServletRequest request,
-                         HttpServletResponse response) throws ServletException, IOException {
-        process(request, response);
-    }
-
-    protected void doPost(HttpServletRequest request,
-                          HttpServletResponse response) throws ServletException, IOException {
-        process(request, response);
-    }
-
-    /**
-     * Main method of this controller.
-     */
-
-    private void process(HttpServletRequest request,
-                         HttpServletResponse response) throws IOException, ServletException {
-
-        LOG.debug("Controller starts");
-
-        // extract command name from the request
-        String commandName = request.getParameter("command");
-        LOG.trace("Request parameter: command --> " + commandName);
-
-        // obtain command object by its name
-        Command command = CommandContainer.get(commandName);
-        LOG.trace("Obtained command --> " + command);
-
-        // execute command and get forward address
-        String forward = Path.PAGE_ERROR_PAGE;
+    
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         try {
-            forward = command.execute(request, response);
-        } catch (AppException ex) {
-            request.setAttribute("errorMessage", ex.getMessage());
+            process(req, resp, "get");
+        } catch (AppException e) {
+            e.printStackTrace();
         }
-        LOG.trace("Forward address --> " + forward);
+    }
 
-        LOG.debug("Controller finished, now go to forward address --> " + forward);
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        try {
+            process(req, resp, "post");
+        } catch (AppException e) {
+            e.printStackTrace();
+        }
+    }
 
-        // go to forward
-        request.getRequestDispatcher(forward).forward(request, response);
+    private void process(HttpServletRequest req, HttpServletResponse resp, String method)
+            throws IOException, ServletException, AppException {
+        String command = req.getParameter("command");
+
+        LOG.debug("Executing command " + command);
+        String path = "/" + CommandContainer.get(command).execute(req, resp);
+
+        if (method.equals("post")) {
+            LOG.debug("Redirecting to " + path);
+            resp.sendRedirect(req.getContextPath() + path);
+        } else {
+            LOG.debug("Forward to " + path);
+            req.getRequestDispatcher(path).forward(req, resp);
+        }
     }
 
 }

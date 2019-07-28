@@ -17,13 +17,10 @@ public class Messages {
     public static final String ERR_CANNOT_INSERT_QUESTION = "Cannot insert a question into data base";
     public static final String ERR_CANNOT_UPDATE_QUESTION = "Cannot update a question into data base";
     public static final String ERR_CANNOT_DELETE_QUESTION = "Cannot delete a question from data base";
-    public static final String ERR_CANNOT_CHANGE_ANSWER_TYPE_OF_QUESTION_ON_USER_ANSWER = "You must have just one answer in this question and it must be true" ;
-    public static final String ERR_CANNOT_CHANGE_ANSWER_TYPE_OF_QUESTION_ON_ONE_TRUE = "You must have more then one answer in this question and just one true answer";
-    public static final String ERR_CANNOT_CHANGE_ANSWER_TYPE_OF_QUESTION_ON_MANY_TRUE =  "You must have more then two answer in this question and more then one true answer";
-    public static final String ERR_CANNOT_CHANGE_ANSWER_TYPE = "Cannot change answer type of this question" ;
     public static final String ERR_CANNOT_DELETE_ANSWER = "Cannot delete a answer from data base";
     public static final String ERR_CANNOT_INSERT_ANSWER = "Cannot insert a answer into data base";
     public static final String ERR_CANNOT_OBTAIN_RESULT = "Cannot obtain result from data source";
+    public static final String ERR_CANNOT_UPDATE_USER = "Cannot update a user into data base";
 
     private Messages() {
         //--------

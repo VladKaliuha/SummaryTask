@@ -13,11 +13,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.ObjectStreamClass;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class StartTestCommand extends Command {
+    private static final long serialVersionUID = ObjectStreamClass
+            .lookup(StartTestCommand.class)
+            .getSerialVersionUID();
 
     private static final Logger LOG = Logger.getLogger(CommandContainer.class);
 

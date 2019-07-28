@@ -14,9 +14,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.ObjectStreamClass;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class UserCabinetCommand extends Command {
+
+    private static final long serialVersionUID = ObjectStreamClass
+            .lookup(UserCabinetCommand.class)
+            .getSerialVersionUID();
+
     private static final Logger LOG = Logger.getLogger(CommandContainer.class);
 
 
@@ -34,9 +42,14 @@ public class UserCabinetCommand extends Command {
         DBManager manager = DBManager.getInstance();
 
         List<Result> result = manager.findUserResult(user.getId());
+        Collections.sort(result, new Comparator<Result>() {
+            public int compare(Result o1, Result o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
+        });
 
         request.setAttribute("result", result);
 
-        return Path.PAGE_USER_CABINET;
+        return Path.PAGE_STUDENT_CABINET;
     }
 }

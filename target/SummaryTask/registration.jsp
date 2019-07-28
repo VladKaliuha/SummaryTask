@@ -10,6 +10,40 @@
     #test:invalid {
         color: red
     }
+    table{
+        margin: auto;
+    }
+    .content {
+        text-align: center;
+    }
+    input[type=text] {
+        padding: 5px;
+        border: none;
+        border-bottom: 2px solid blue;
+    }
+
+    input[type=password] {
+        padding: 5px;
+        border: none;
+        border-bottom: 2px solid blue;
+    }
+
+    input[type=submit] {
+        padding: 5px 70px;
+        background: #ccc;
+        border: 0 none;
+        cursor: pointer;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+    input[type=submit]:hover {
+        background: #6B9CD2;
+    }
+
+    input[type=submit]:active {
+        background: #0917d2;
+    }
 </style>
 
 <body>
@@ -49,20 +83,22 @@ Class page corresponds to the '.page' element in included CSS document.
                     after you submit current form.
                     ===========================================================================--%>
                     <input type="hidden" name="command" value="registration"/>
-
+                    <br>
+                    <br>
+                    <br>
                     <fieldset>
                         <legend>Name</legend>
-                        <input name="first_name" required/><br/>
+                        <input type="text" name="first_name" required/><br/>
                     </fieldset>
                     <br/>
                     <fieldset>
                         <legend>Surname</legend>
-                        <input name="last_name" required/><br/>
+                        <input type="text" name="last_name" required/><br/>
                     </fieldset>
                     <br/>
                     <fieldset>
                         <legend>Login</legend>
-                        <input name="login" required/><br/>
+                        <input type="text" name="login" required/><br/>
                     </fieldset>
                     <br/>
                     <fieldset>
@@ -76,10 +112,13 @@ Class page corresponds to the '.page' element in included CSS document.
                         <input type="password" name="password" required minlength="6" , maxlength="20"/>
                     </fieldset>
                     <br/>
-                    <select name="male">
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select>
+                    <fieldset>
+                        <legend>Male</legend>
+                        <select name="male">
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </fieldset>
                     <br/>
 
                     <input type="submit" value="Registration">

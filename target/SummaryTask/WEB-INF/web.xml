@@ -44,7 +44,7 @@
     <filter-class>ua.nure.kaliuha.SummaryTask4.web.filter.CommandAccessFilter</filter-class>
     <init-param>
       <param-name>admin</param-name>
-      <param-value>deleteQuestion showUserResults deleteAnswer createAnswer editQuestion showQuestion startEditQuestion createQuestion editSubject createSubject deleteSubject updateTest createTest editTest deleteTest updateTest </param-value>
+      <param-value>deleteQuestion showUserResults showAllUsers searchUser openUserCabinet changeRole deleteAnswer createAnswer editQuestion showQuestion startEditQuestion createQuestion editSubject createSubject deleteSubject updateTest createTest editTest deleteTest updateTest </param-value>
     </init-param>
     <init-param>
       <param-name>student</param-name>
@@ -52,7 +52,7 @@
     </init-param>
     <init-param>
       <param-name>block</param-name>
-      <param-value></param-value>
+      <param-value>logout</param-value>
     </init-param>
     <init-param>
       <param-name>common</param-name>

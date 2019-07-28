@@ -1,7 +1,16 @@
 package ua.nure.kaliuha.SummaryTask4.web.command;
 
 import org.apache.log4j.Logger;
-import ua.nure.kaliuha.SummaryTask4.web.command.admin.*;
+import ua.nure.kaliuha.SummaryTask4.web.command.admin.answer.CreateAnswerCommand;
+import ua.nure.kaliuha.SummaryTask4.web.command.admin.answer.DeleteAnswerCommand;
+import ua.nure.kaliuha.SummaryTask4.web.command.admin.question.*;
+import ua.nure.kaliuha.SummaryTask4.web.command.admin.subject.CreateSubjectCommand;
+import ua.nure.kaliuha.SummaryTask4.web.command.admin.subject.DeleteSubjectCommand;
+import ua.nure.kaliuha.SummaryTask4.web.command.admin.subject.EditSubjectCommand;
+import ua.nure.kaliuha.SummaryTask4.web.command.admin.test.CreateTestCommand;
+import ua.nure.kaliuha.SummaryTask4.web.command.admin.test.DeleteTestCommand;
+import ua.nure.kaliuha.SummaryTask4.web.command.admin.test.EditTestCommand;
+import ua.nure.kaliuha.SummaryTask4.web.command.admin.user.*;
 import ua.nure.kaliuha.SummaryTask4.web.command.common.ForwardToCommand;
 import ua.nure.kaliuha.SummaryTask4.web.command.common.SubjectsListCommand;
 import ua.nure.kaliuha.SummaryTask4.web.command.common.TestsListCommand;
@@ -44,6 +53,10 @@ public class CommandContainer {
         commands.put("deleteAnswer", new DeleteAnswerCommand());
         commands.put("createAnswer", new CreateAnswerCommand());
         commands.put("showUserResults", new ShowUserResultsCommand());
+        commands.put("showAllUsers", new ShowAllUsersCommand());
+        commands.put("searchUser", new SearchUserCommand());
+        commands.put("openUserCabinet", new OpenUserCabinetCommand());
+        commands.put("changeRole", new ChangeRoleCommand());
 
 /*      commands.put("te", new ViewSettingsCommand());
         commands.put("noCommand", new NoCommand());

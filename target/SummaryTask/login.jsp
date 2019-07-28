@@ -12,8 +12,38 @@
         height: 100%;
     }
 
+    table{
+        margin: auto;
+    }
     .content {
-        flex: 1 0 auto;
+        text-align: center;
+    }
+    input[type=text] {
+        padding: 5px;
+        border: none;
+        border-bottom: 2px solid blue;
+    }
+    input[type=password] {
+        padding: 5px;
+        border: none;
+        border-bottom: 2px solid blue;
+    }
+
+    input[type=submit] {
+        padding: 5px 70px;
+        background: #ccc;
+        border: 0 none;
+        cursor: pointer;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+    input[type=submit]:hover {
+        background: #6B9CD2;
+    }
+
+    input[type=submit]:active {
+        background: #0917d2;
     }
 </style>
 
@@ -53,11 +83,15 @@ Class page corresponds to the '.page' element in included CSS document.
                     The purpose of this to define the command name, which have to be executed
                     after you submit current form.
                     ===========================================================================--%>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <input type="hidden" name="command" value="login"/>
 
                     <fieldset>
                         <legend>Login</legend>
-                        <input name="login" required/><br/>
+                        <input type="text" name="login" required/><br/>
                     </fieldset>
                     <br/>
                     <fieldset>

@@ -1,5 +1,8 @@
 package ua.nure.kaliuha.SummaryTask4.db.entity;
 
+import ua.nure.kaliuha.SummaryTask4.db.DBManager;
+import ua.nure.kaliuha.SummaryTask4.exeption.DBException;
+
 import java.io.ObjectStreamClass;
 
 public class Result extends Entity {
@@ -11,6 +14,8 @@ public class Result extends Entity {
     private long testId;
     private int result;
     private String date;
+
+    User user;
 
     public String getTestName() {
         return testName;
@@ -52,6 +57,18 @@ public class Result extends Entity {
 
     public void setResult(int result) {
         this.result = result;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser() {
+        try {
+            user = DBManager.getInstance().findUser(userId);
+        } catch (DBException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
